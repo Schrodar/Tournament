@@ -18,7 +18,10 @@ html {
 }
 body{
     font-family: 'Montserrat', sans-serif;
+    background: rgb(224, 217, 217);
 }
+
+
 
 h2{
     font-size: 3rem;
@@ -28,7 +31,6 @@ h2{
 h3{
     font-size: 1.3rem;
     color: #333;
-    padding: 1.5rem;
 }
 p{
     font-size: 1.2rem;
@@ -42,7 +44,13 @@ a{
  img{
     display:block;
  }
-
+#numberOfTeams{
+    font-size:2rem;
+    margin-left: 1rem;
+}
+#pushmedown{
+    margin-top: 1rem;
+}
 
 `;
 export default GlobalStyles;

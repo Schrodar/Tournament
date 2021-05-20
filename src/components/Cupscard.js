@@ -1,50 +1,57 @@
-import React from "react";
+
 // Styling and Animation
 import  styled  from "styled-components";
 import { motion } from "framer-motion";
 // REDUX
-import dimma from "../img/cup-Logo.jpg";
-
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Cup = ({name, game, numberOfTeams, id, pathId}) => {
-
-
-
+const Cup = ({ game, id }) => {
+    // setting up data 
+    const listan = useSelector(state => state.listan);
+    const newList = Object.values(listan)
 
     return(
-        <StyledCups layoutId={pathId}>
-            <Link to={`/tournament/${id}`}>
-            <h1>
-                {name}
-            </h1>
-            <p>
-                {game}
-            </p>
-            <p>
-                {numberOfTeams}
-            </p>
-            <img src={dimma} alt=""/>
+        <StyledCups>
+            <Link to={`/Tournament/${id}`}>
+                <h1>
+                    Game: {game} 
+                </h1>
+                <StyledForceBottom>
+                    <img src={newList.filter((stateCup) => (stateCup.key === id))[0].mainImg} alt=""/>
+                </StyledForceBottom>
             </Link>
         </StyledCups>
     );
 };
 
 const StyledCups = styled(motion.div)`
-    padding: 0.5rem;
+    position: relative;
     border-radius: 1rem;
-    background: yellow;
+    height: 26vh;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+    text-align:center;
     cursor: pointer;
    h1{
        font-size: 1rem;
+       padding: 1rem;
+
    }
    p{
        font-size: 12px;
    }
    img {
-    border-radius: 1rem;
+       width: 100%;
+       height: 15vh;
+       object-fit: cover;
    }
 `;
 
+const StyledForceBottom = styled(motion.div)`
+
+position: absolute;
+bottom:0px;
+`;
 
 export default Cup;

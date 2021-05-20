@@ -1,13 +1,11 @@
-const initState = {
-    listan: []    
-  }
+import { cupInfo } from "../data";
     
-    const cupActiveReducer = (state = initState, action) => {
+
+    const cupActiveReducer = (state = cupInfo(), action) => {
       switch (action.type) {
         case "GET_TOURNAMENT_ID":
           return {
-            ...state,
-             ...action.payload,
+            ...state, 
         };
         default:
           return { 

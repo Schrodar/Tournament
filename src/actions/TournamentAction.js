@@ -3,7 +3,7 @@ import { cupsURL } from "../api";
 
 // actions  Creator
 
-export const loadTorunament = () => async (dispatch) => {
+export const loadTournament = () => async (dispatch) => {
     // Fetch witdh axios    
     try {
         dispatch({

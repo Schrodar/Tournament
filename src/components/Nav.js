@@ -35,12 +35,13 @@ export default Nav;
 
 
 const StyledNav = styled(motion.div)`
-    height: 20vh;
+    height: 15vh;
     top: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    background: #141414;
     ul {
         display: flex;
         list-style: none;
@@ -51,7 +52,8 @@ const StyledNav = styled(motion.div)`
         margin: 0rem 3rem;
     }
     a {
-        color: black;
+        color: #ffffff;
+        font-size: 1.1rem;
     }
 
     

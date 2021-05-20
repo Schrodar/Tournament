@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 // styling and motion
 import styled  from "styled-components";
-import { motion, AnimatePresence, AnimateSharedLayout} from "framer-motion";
+import { motion } from "framer-motion";
 
 // Components
 import Cups from "../components/Cupscard";
 import JoinCup from "../components/Join";
-import { loadTorunament } from "../actions/TournamentAction";
+import { loadTournament } from "../actions/TournamentAction";
 import { useLocation } from "react-router-dom";
 
 
@@ -18,10 +18,10 @@ const Tournament = () => {
 
 
 // Fetch Data
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
 
 useEffect(() => {
-  dispatch(loadTorunament());
+  dispatch(loadTournament());
 },[dispatch]);
 
 // get Data From state
@@ -32,12 +32,17 @@ const {Tournament} = useSelector((state) =>
 // find location
 const location = useLocation();
 const pathId = location.pathname.split("/")[2];
+const convert = parseInt(pathId);
+
+
 
 
 return(
     <CupList>
 
-        {pathId && <JoinCup id={pathId} pathId={pathId} />}
+        {pathId && <JoinCup 
+        id={convert}           
+        />}
         {Tournament.map((Tournament) =>
         
         <Cups
@@ -57,17 +62,19 @@ return(
 
 const CupList = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   grid-column-gap: 3rem;
-  grid-row-gap: 5rem;
+  grid-row-gap: 3rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
   img {
     width: 100%;
-    height: 15vh;
+    height: 19vh;
     object-fit: cover;
+  border-end-end-radius: 1rem;
+  border-end-start-radius: 1rem;
    }
 `;
 
   
 export default Tournament;
-
-  
