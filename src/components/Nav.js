@@ -2,7 +2,10 @@ import React from "react";
 import styled  from "styled-components";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
+
 const Nav = () => {
+
 
 
     return(
@@ -14,10 +17,10 @@ const Nav = () => {
         <StyledNavdiv>
             <ul>
                 <li>
-                  <Link to="/">Home</Link>
+                <Link to="/">Home</Link>
                 </li>
                 <li>
-                   <Link to="/Tournament">Tournament</Link>
+                   <Link to="/tournament">Tournament</Link>
                 </li>
                 <li>
                  <Link to="/team">Team</Link>

@@ -2,9 +2,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 //redux And react
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
 import { useHistory } from 'react-router-dom';
+
 
 
 
@@ -22,31 +22,14 @@ const JoinCup = ({id}) => {
   };
 
   //Struckter data so it can be read
-  const {Tournament} =  useSelector((state) => (state.Tournament));
-  const data =  Tournament.filter((state) => state.id === id);
-  const listan = useSelector(state => state.listan);
-  const cupsInformation = Object.values(listan);
-  const isLoading = useSelector((state) => (state.Tournament.isLoading));
+ 
 
+  
 
   // join a cup and addit to active in ui 
-  const dispatch = useDispatch();
+  
   const JoinAndAdd = () => {
-    dispatch({
-      type: "GET_TOURNAMENT_ID",
-      payload: { 
-        listan: {
-          listan: listan[data[0].id - 1].active = true,
-        }  
-      }
-    });
-
-    dispatch({
-      type: "DATA_IN",
-      payload: { 
-        id: data[0].id
-      }
-    });
+    console.log("its done")
   };
 
     
@@ -54,19 +37,13 @@ const JoinCup = ({id}) => {
     return(
       
         <StyledCardShadow className="shadow" onClick={exitCardHandler}>
-            <StyledCard>
+            <StyledCard layoutId={id}>
               <StyledCupBrand>
                   <StyledForcedSize>
-                    <img src={!isLoading && cupsInformation.filter((stateCup) => (stateCup.key === id))[0].secondImg} alt=""/>
+                   {/*  <motion.img  src={!isLoading && cupsInformation.filter((stateCup) => (stateCup.key === id))[0].secondImg} alt=""/> */}
                    </StyledForcedSize>
                   <StyledTextWrapper>
-                  <h1>{!isLoading && data[0].name}</h1>
-                  <h2>{!isLoading && data[0].game}</h2>
-                  <h3>Number of competing teams: <span id="numberOfTeams">{!isLoading && data[0].numberOfTeams}</span></h3>
-                  <h3>Admin: {!isLoading && cupsInformation.filter((stateCup) => (stateCup.key === id))[0].cupInformation[0].admin}</h3>
-                  <h3>Start date: {!isLoading && cupsInformation.filter((stateCup) => (stateCup.key === id))[0].cupInformation[0].startDate} </h3>
-                  <h3>Start time: {!isLoading && cupsInformation.filter((stateCup) => (stateCup.key === id))[0].cupInformation[0].startTime}</h3>
-                  <h3>Rules: {!isLoading && cupsInformation.filter((stateCup) => (stateCup.key === id))[0].cupInformation[0].rules}</h3>
+                    <h1>some txt</h1>
                   <button onClick={JoinAndAdd} id="pushmedown">Join with Team</button>
                   </StyledTextWrapper>
                 </StyledCupBrand>
@@ -85,7 +62,8 @@ const StyledCard = styled(motion.div)`
   border-left: 1rem;
   border-start-end-radius: 1rem;
   border-end-end-radius: 1rem;
-  border-end-start-radius: 1rem;
+  border-end-start-radius: 1rem; 
+  border-start-start-radius: 1rem;
   
   padding: 0rem 5rem 0rem 0rem;
   position: absolute;

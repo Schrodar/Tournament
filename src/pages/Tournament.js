@@ -1,49 +1,57 @@
 import React,{ useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector} from "react-redux";
 
 
 // styling and motion
 import styled  from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence ,AnimateSharedLayout,} from "framer-motion";
 
 // Components
 import Cups from "../components/Cupscard";
 import JoinCup from "../components/Join";
-import { loadTournament } from "../actions/TournamentAction";
+import { loadTournament, tournamentsReceived } from "../store/tournament";
 import { useLocation } from "react-router-dom";
 
+/* import { tryme } from "../actions/test"; */
 
 
 const Tournament = () => {
+  const dispatch = useDispatch();
 
 
 // Fetch Data
-const dispatch = useDispatch();
+
 
 useEffect(() => {
   dispatch(loadTournament());
+/*   dispatch(tryme()); */
 },[dispatch]);
 
 // get Data From state
 
-const {Tournament} = useSelector((state) => 
-(state.Tournament)
-);
+const { tournament, isLoading }  = useSelector((state => state.Entities))
+
+
+
+
 // find location
-const location = useLocation();
+ const location = useLocation();
 const pathId = location.pathname.split("/")[2];
-const convert = parseInt(pathId);
+const convert = parseInt(pathId);  
 
 
 
 
 return(
-    <CupList>
-
+  <>
+  {!isLoading &&<CupList>
+     <AnimateSharedLayout>
+        <AnimatePresence>
         {pathId && <JoinCup 
         id={convert}           
-        />}
-        {Tournament.map((Tournament) =>
+        />} 
+        </AnimatePresence>
+        {tournament.map((Tournament) =>
         
         <Cups
           name={Tournament.name}
@@ -51,30 +59,31 @@ return(
           numberOfTeams={Tournament.numberOfTeams}
           id={Tournament.id}
           key={Tournament.id}
-          pathId={pathId}
+          pathId={convert} 
           />
           )}
-
+        </AnimateSharedLayout> 
     </CupList>
+  } 
+  </>
   )
 
 };
 
 const CupList = styled(motion.div)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(275px, 275px));
   grid-column-gap: 3rem;
   grid-row-gap: 3rem;
-  margin-right: 2rem;
-  margin-top: 2rem;
   img {
     width: 100%;
-    height: 19vh;
-    object-fit: cover;
-  border-end-end-radius: 1rem;
-  border-end-start-radius: 1rem;
+    border-end-end-radius: 1rem;
+    border-end-start-radius: 1rem;
    }
 `;
 
+
+
   
-export default Tournament;
+  
+export default Tournament

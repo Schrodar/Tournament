@@ -3,30 +3,33 @@ import React from "react";
 // Node  package
 import styled from 'styled-components';
 import { motion } from "framer-motion";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 
 // Pages
 import Tournament  from "../pages/Tournament";
 import Home from "../pages/Home";
 import Upcoming from "../pages/upcoming"
 import Team from "../pages/Team";
+import Loggin from "./loggin";
 
 // Componets
-import ActiveTournament from "./ActiveTournament";
+
 
  
 
 const Main = () => {
+    // get Location
 
-
+    const location = useLocation();
+    console.log(location.pathname)
 
     return(
         <StyledWrapper>
             <StyledSidebar>
-                <ActiveTournament  />
+           
             </StyledSidebar>   
             <StyledMain>
-              <Switch>
+            <Switch>   
                 <Route path="/" exact>
                     <Home  />
                 </Route>
@@ -48,6 +51,7 @@ const StyledMain = styled(motion.div)`
     height: 85vh;
     width: 100%;
     background: rgb(231, 235, 240);
+    padding: 2rem;
 `;
 
 const StyledWrapper = styled(motion.div)`
