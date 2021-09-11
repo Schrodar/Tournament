@@ -2,23 +2,39 @@ import React, {useState} from "react";
 import  styled from 'styled-components';
 import { motion,} from "framer-motion";
 import { useDispatch } from "react-redux";
-import * as actions from "../store/createAction";
 import { logginBegan } from "../store/authReducer";
+import { onePlus } from "../store/addUserReducer";
 
 
 
 const LoggIn = () => {
 
-    const url = '/users/login'
-    const onSuccess = 'userAdded';
-    const onError = actions.authUserFailed.type;
-    const dispatch = useDispatch()
-    const test = () =>{
-        
-    }
-
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
+
+    const [userPwd, setUserPwd] = useState("")
+    const [userEmail, setUserEmail] = useState("")
+    const [userName, setUserName] = useState("")
+
+
+    const dispatch = useDispatch()
+    const addUserHandler = (e) =>{
+        let name = userName
+        let email = userEmail
+        let password = userPwd
+
+        e.preventDefault();
+        dispatch(onePlus({name, email, password}))
+        console.log(userPwd, userEmail, userName)
+    }
+
+    const logginHandler = (e) => {
+        e.preventDefault();
+         dispatch(logginBegan({email, password})) 
+
+    }
+
+
     
     const getValue = (e) => {
         setPassword(e.target.value);
@@ -29,27 +45,21 @@ const LoggIn = () => {
     }
 
     const getValue3 = (e) => {
-        setEmail(e.target.value);
+        setUserName(e.target.value);
     }
 
     const getValue4 = (e) => {
-        setEmail(e.target.value);
+        setUserEmail(e.target.value);
     }
 
     const getValue5 = (e) => {
-        setEmail(e.target.value);
-    }
-
-    const getValue6 = (e) => {
-        setEmail(e.target.value);
+        setUserPwd(e.target.value);
     }
 
 
 
-    const logginHandler = (e) => {
-        e.preventDefault();
-         dispatch(logginBegan({email, password})) 
-    }
+
+  
 
 
     return(
@@ -65,13 +75,13 @@ const LoggIn = () => {
                         <StyledInput placeholder="Password" onChange={getValue} />
                     </label>
                 </div>
-                <button onClick={logginHandler} > Go For It</button>
-            </StyledForm>
 
+            </StyledForm>
+            <button onClick={logginHandler} > Login</button>
             
-            <StyledForm>
             <div>
-                    <label htmlFor="email">
+            <div>
+                    <label htmlFor="name">
                        <StyledInput placeholder="name" onChange={getValue3} />
                     </label>
                 </div>
@@ -85,17 +95,11 @@ const LoggIn = () => {
                         <StyledInput placeholder="Password" onChange={getValue5} />
                     </label>
                 </div>
-                <div>
-                    <label htmlFor="email">
-                       <StyledInput type="checkbox" onChange={getValue6} />
-                    </label>
-                </div>
-                <button onClick={logginHandler} > Go For It</button>
-                <div>
-                    <button onClick={test} >loggin</button>
-                </div>
-            </StyledForm>
 
+            </div>
+            <div>
+                    <button onClick={addUserHandler} >Add user</button>
+                </div>
         </StyledLoggIn>
     )
 };

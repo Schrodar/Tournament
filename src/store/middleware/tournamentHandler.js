@@ -4,7 +4,7 @@ import  * as actions from "../createAction";
 const tournamentHandler = ({ dispatch}) => next => async action => {
     
      // if action is not == middelwareCallBegan  then next action in the middleware array 
-    if (action.type !== actions.middelwareCallBegan.type) return next(action);
+    if (action.type !== actions.getTournamentCallBegan.type) return next(action);
     
     // extracting thees methods from the actions paylode
     const { url, method, data ,onSuccess, onError, onStart} = action.payload;
@@ -19,13 +19,13 @@ const tournamentHandler = ({ dispatch}) => next => async action => {
         method,
         data,
         })
-        dispatch(actions.middelwareCallSuccsess(respons.data));
+        dispatch(actions.getTournamentCallSuccsess(respons.data));
         if (onSuccess) dispatch({ type: onSuccess, payload: respons.data });
     } 
     
 
     catch (err) {
-       dispatch(actions.middelwareCallFailed(err));
+       dispatch(actions.getTournamentCallFailed(err));
 
        if (onError) dispatch({ type: onError, payload: err })
     }

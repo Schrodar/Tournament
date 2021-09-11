@@ -1,4 +1,4 @@
-import { middelwareCallBegan } from "./createAction";
+import { getTournamentCallBegan } from "./createAction";
 import { createSlice } from "@reduxjs/toolkit";
 
 const url = '/tournament'
@@ -45,7 +45,7 @@ export const {
 export default slice.reducer;
 
   
-export const loadTournament = () => middelwareCallBegan ({
+export const loadTournament = () => getTournamentCallBegan ({
     url,
     onStart: tournamentRequested.type,
     onSuccess: tournamentsReceived.type,

@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
-import reducer from './tournamentReducer';
-import reducer2 from './authReducer'
-
+import tournamentReducer from './tournamentReducer';
+import authReducer from './authReducer'
+import userAddedReducer from "./addUserReducer";
 
 const reducers =  combineReducers({
-        tournament: reducer,
-        users: reducer2
+        tournament: tournamentReducer,
+        users: authReducer,
+        addedUser: userAddedReducer
 });
 
 export default reducers;
