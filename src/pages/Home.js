@@ -1,13 +1,11 @@
 import React from "react";
 import  styled from 'styled-components';
 import { motion } from "framer-motion";
-
-import { tournamentsReceived, loadTournament } from "../store/tournament";
 import full from "../img/cs go2223.jpg";
-import { useDispatch } from "react-redux";
+
+
 const Home = () => {
 
- const dispatch = useDispatch();
   
 
 
@@ -19,10 +17,6 @@ const Home = () => {
        </StyledSlides>
         <StyledLeft>
                 <h1>Play and Game <span>to</span> make Your dream</h1>
-                <button onClick={ () => dispatch(loadTournament())}> hello 
-                </button>
-
-                <button onClick={() => dispatch(tournamentsReceived())}> 22</button>
        </StyledLeft> 
       </StyldeSlideHolder>
     </StyledHome>

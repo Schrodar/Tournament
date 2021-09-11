@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import reducer from './tournament';
-import reducer2 from './auth'
+import reducer from './tournamentReducer';
+import reducer2 from './authReducer'
 
 
 const reducers =  combineReducers({

@@ -3,7 +3,7 @@ import  styled from 'styled-components';
 import { motion,} from "framer-motion";
 import { useDispatch } from "react-redux";
 import * as actions from "../store/createAction";
-import { logginBegan } from "../store/auth";
+import { logginBegan } from "../store/authReducer";
 
 
 
@@ -48,22 +48,6 @@ const LoggIn = () => {
 
     const logginHandler = (e) => {
         e.preventDefault();
-        console.log(password)
-        console.log(email)
-
-/*         dispatch({
-           type: actions.authUserBegan.type,
-           payload: {
-            url, 
-            method: 'post', 
-            data: { 
-                email,
-                password,
-            } ,
-            onSuccess , 
-            onError
-           }
-        }); */
          dispatch(logginBegan({email, password})) 
     }
 

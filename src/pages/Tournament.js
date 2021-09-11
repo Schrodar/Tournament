@@ -1,5 +1,5 @@
 import React,{ useEffect } from "react";
-import { connect, useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 
 
 // styling and motion
@@ -9,7 +9,7 @@ import { motion, AnimatePresence ,AnimateSharedLayout,} from "framer-motion";
 // Components
 import Cups from "../components/Cupscard";
 import JoinCup from "../components/Join";
-import { loadTournament } from "../store/tournament";
+import { loadTournament } from "../store/tournamentReducer";
 import { useLocation } from "react-router-dom";
 
 /* import { tryme } from "../actions/test"; */

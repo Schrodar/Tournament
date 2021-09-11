@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 import { authUserBegan, authUserFailed } from "./createAction";
 
 const url = "/users/login"
