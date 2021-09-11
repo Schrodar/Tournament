@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 import { authUserBegan, authUserFailed } from "./createAction";
 
 const url = "/users/login"
@@ -6,11 +7,14 @@ const url = "/users/login"
 const slice = createSlice({
   name: "user",
   initialState: {
-    LoggedIn: false
+    user: [],
+    LoggedIn: false,
+    token: []
   },
   reducers: {
     userAdded: (state, action) => {
-      state.user = action.payload
+      state.user = action.payload.user.name
+      state.token = action.payload.token
       state.LoggedIn = true
       },
       
