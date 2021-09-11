@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from './combindReducer.js'
+import enteties from './enteties'
 import thunk from "redux-thunk";
-import api from "./middleware/api";
+import tournamentHandler from "./middleware/tournamentHandler";
+import authHandler from "./middleware/authentication"
 
 const store = configureStore({
-  reducer: rootReducer,
-  middleware: [thunk, api]
+  reducer: enteties,
+  middleware: [thunk, authHandler,tournamentHandler ]
 });
 
 export default store;

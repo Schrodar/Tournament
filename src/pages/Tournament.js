@@ -9,7 +9,7 @@ import { motion, AnimatePresence ,AnimateSharedLayout,} from "framer-motion";
 // Components
 import Cups from "../components/Cupscard";
 import JoinCup from "../components/Join";
-import { loadTournament, tournamentsReceived } from "../store/tournament";
+import { loadTournament } from "../store/tournament";
 import { useLocation } from "react-router-dom";
 
 /* import { tryme } from "../actions/test"; */
@@ -29,13 +29,14 @@ useEffect(() => {
 
 // get Data From state
 
-const { tournament, isLoading }  = useSelector((state => state.Entities))
+const tournament   = useSelector(state => state.Entities.tournament.list);
 
+const isLoading = useSelector(state => state.Entities.tournament.isLoading)
 
 
 
 // find location
- const location = useLocation();
+const location = useLocation();
 const pathId = location.pathname.split("/")[2];
 const convert = parseInt(pathId);  
 
@@ -64,7 +65,7 @@ return(
           )}
         </AnimateSharedLayout> 
     </CupList>
-  } 
+  }  
   </>
   )
 

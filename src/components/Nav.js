@@ -12,6 +12,7 @@ const Nav = () => {
     <StyledNav>
         
         <div>
+            <Link to="/loggin">loggin</Link>
         </div>
 
         <StyledNavdiv>

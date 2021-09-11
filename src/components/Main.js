@@ -10,7 +10,7 @@ import Tournament  from "../pages/Tournament";
 import Home from "../pages/Home";
 import Upcoming from "../pages/upcoming"
 import Team from "../pages/Team";
-import Loggin from "./loggin";
+import Loggin from "./Loggin";
 
 // Componets
 
@@ -30,8 +30,11 @@ const Main = () => {
             </StyledSidebar>   
             <StyledMain>
             <Switch>   
+                <Route path="/loggin" exact>
+                    <Loggin />
+                </Route>
                 <Route path="/" exact>
-                    <Home  />
+                    <Home />
                 </Route>
                 <Route  path="/team">
                     <Team />

@@ -1,4 +1,4 @@
-import { apiCallBegan } from "./createAction";
+import { middelwareCallBegan } from "./createAction";
 import { createSlice } from "@reduxjs/toolkit";
 
 const url = '/tournament'
@@ -6,7 +6,7 @@ const url = '/tournament'
 const slice = createSlice({
     name: 'tournament',
     initialState: {
-        tournament: [],
+        list: [],
         isLoading: true,
         lastFetch: null
     },
@@ -20,7 +20,7 @@ const slice = createSlice({
         tournamentsReceived: (state, action) => {
             // uppdating the Ui databes (store)
             state.isLoading = false
-            state.tournament = action.payload
+            state.list = action.payload
             },
         tournamentAdded: (tournament, action) => {
 
@@ -45,7 +45,7 @@ export const {
 export default slice.reducer;
 
   
-export const loadTournament = () => apiCallBegan ({
+export const loadTournament = () => middelwareCallBegan ({
     url,
     onStart: tournamentRequested.type,
     onSuccess: tournamentsReceived.type,

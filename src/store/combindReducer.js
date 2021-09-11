@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import reducer from './tournament';
+import reducer2 from './auth'
 
 
-const rootReducer =  combineReducers({
-        Entities: reducer,
+const reducers =  combineReducers({
+        tournament: reducer,
+        users: reducer2
 });
 
-export default rootReducer;
+export default reducers;

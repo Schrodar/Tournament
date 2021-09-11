@@ -9,8 +9,9 @@ import { useSelector } from "react-redux";
 const Cup = ({ game, id }) => {
     // setting up data 
 
-    const {tournament, isLoading} = useSelector(state => state.Entities);
-
+    const tournament = useSelector(state => state.Entities.tournament.list);
+    const isLoading = useSelector(state => state.Entities.tournament.isLoading);
+    
 
     return(
     <>
