@@ -1,11 +1,18 @@
 import React from 'react';
+import LogginTest from "../components/loginPageHandler.js";
+
 
 const Upcoming = () => {
+
+
+
+
     return(
         <div>
-            <h1>
-                hello Events
-            </h1>
+            <LogginTest/>
+                    <h1>
+                        hello Events
+                    </h1>
         </div>
     )
 };

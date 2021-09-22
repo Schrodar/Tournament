@@ -5,6 +5,11 @@ import { motion } from "framer-motion";
 // REDUX
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { 
+    StyledCups,
+    Styledtext,
+    Styledimg
+ } from "../styles";
 
 const Cup = ({ game, id }) => {
     // setting up data 
@@ -33,31 +38,4 @@ const Cup = ({ game, id }) => {
     );
 };
 
-const StyledCups = styled(motion.div)`
-    border-radius: 1rem;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    background: #ffffff;
-    cursor: pointer;
-   h1{
-       font-size: 1rem;
-       padding: 1rem;
-
-   }
-   p{
-       font-size: 12px;
-   }
-   img {
-        display: block;
-   }
-`;
-
-const Styledimg = styled(motion.div)`
-
-
-
-`;
-
-const Styledtext = styled(motion.div)`
-    height: 75px ;
-`
 export default Cup;

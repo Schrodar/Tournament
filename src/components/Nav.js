@@ -1,19 +1,40 @@
-import React from "react";
-import styled  from "styled-components";
-import { motion } from "framer-motion";
+import React  from "react";
+import { StyledNav, StyledNavdiv, StyledNavdiv2 } from "../styles";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { loginBtn, logOute } from "../store/authReducer";
 
 
 const Nav = () => {
 
+    const data = useSelector( state => state.Entities.users);
+    const dispatch = useDispatch();
+    const loginBtnValue = useSelector( state => state.Entities.users.guest)
+    const isLoggedIn = useSelector( state => state.Entities.users.LoggedIn);
+    
+    console.log(data)
 
+    function LoginBtn() {
+       if (isLoggedIn) {
+         return <UserGreeting />;
+       }
+        return <GuestGreeting />;
+    }
 
+    function UserGreeting() {
+       return <button onClick={() => dispatch(logOute(data))}>logout</button>;
+    }
+      
+    function GuestGreeting() {
+        return <button onClick={() => dispatch(loginBtn( !loginBtnValue ))}>Login</button>;
+    }
+    
     return(
     <StyledNav>
         
-        <div>
-            <Link to="/loggin">loggin</Link>
-        </div>
+        <StyledNavdiv2>
+            <LoginBtn isLoggedIn={isLoggedIn} />
+        </StyledNavdiv2>
 
         <StyledNavdiv>
             <ul>
@@ -36,32 +57,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-
-const StyledNav = styled(motion.div)`
-    height: 15vh;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background: #141414;
-    ul {
-        display: flex;
-        list-style: none;
-        
-    }
-    li {
-        font-family: 'Abril Fatface', cursive;
-        margin: 0rem 3rem;
-    }
-    a {
-        color: #ffffff;
-        font-size: 1.1rem;
-    }
-
-    
-`; 
-const StyledNavdiv = styled(motion.div)`
-    margin-right:  2.5rem;
-`;

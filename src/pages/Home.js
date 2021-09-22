@@ -2,15 +2,15 @@ import React from "react";
 import  styled from 'styled-components';
 import { motion } from "framer-motion";
 import full from "../img/cs go2223.jpg";
-
-
+import  LogginTest  from "../components/loginPageHandler";
 const Home = () => {
 
-  
+
 
 
     return(
   <StyledHome>
+    <LogginTest/>
     <StyldeSlideHolder>
        <StyledSlides>
             <img src={full} alt=""/>

@@ -2,14 +2,14 @@ import React from "react";
 // style 
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import LogginTest from "../components/loginPageHandler";
 
 const Team = () => {
 
 
-
-
     return(
         <Wrapper>
+            <LogginTest/>
             <Left>
                 <Frame>
                     <input type="text" placeholder="Team name" />

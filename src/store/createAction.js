@@ -12,3 +12,6 @@ export const addUserBegan = createAction("middelware/addUserBegan");
 export const addUserSuccsess = createAction("middelware/addUserSuccsess");
 export const addUserFailed = createAction("middelware/addUserFailed");
  
+export const logOuteBegan = createAction("middelware/logOuteBegan");
+export const logOuteSuccsess = createAction("middelware/logOuteSuccsess");
+export const logOuteFailed = createAction("middelware/logOuteFailed");
